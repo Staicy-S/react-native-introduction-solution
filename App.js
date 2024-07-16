@@ -9,13 +9,13 @@ export default function App() {
   const [button3, setButton3] = useState("white");
 
   const [clicksIndex, setClicksIndex] = useState(0);
-  function changeColor(color, buttonIndex) {
+  function changeColor(buttonIndex) {
     if (buttonIndex === 1) {
-      setButton1("red");
+      setButton1((prevColor) => (prevColor === "white" ? "red" : "white"));
     } else if (buttonIndex === 2) {
-      setButton2("blue");
+      setButton2((prevColor) => (prevColor === "white" ? "blue" : "white"));
     } else if (buttonIndex === 3) {
-      setButton3("green");
+      setButton3((prevColor) => (prevColor === "white" ? "green" : "white"));
     }
 
     setClicksIndex((prevCount) => prevCount + 1);
@@ -26,7 +26,7 @@ export default function App() {
       <Pressable
         onPress={() => {
           console.log("First button is pressed");
-          changeColor("red", 1);
+          changeColor(1);
         }}
         onPressIn={() => {
           console.log("On Press In");
@@ -49,7 +49,7 @@ export default function App() {
       </Pressable>
       <Pressable
         onPress={() => {
-          changeColor("blue", 2);
+          changeColor(2);
         }}
         style={[
           {
@@ -62,7 +62,7 @@ export default function App() {
       </Pressable>
       <Pressable
         onPress={() => {
-          changeColor("green", 3);
+          changeColor(3);
         }}
         style={[
           {
