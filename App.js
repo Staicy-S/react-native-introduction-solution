@@ -11,11 +11,11 @@ export default function App() {
   const [clicksIndex, setClicksIndex] = useState(0);
   function changeColor(color, buttonIndex) {
     if (buttonIndex === 1) {
-      setButton1("red");
+      setButton1(color);
     } else if (buttonIndex === 2) {
-      setButton2("blue");
+      setButton2(color);
     } else if (buttonIndex === 3) {
-      setButton3("green");
+      setButton3(color);
     }
 
     setClicksIndex((prevCount) => prevCount + 1);
