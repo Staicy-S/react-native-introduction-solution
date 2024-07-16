@@ -4,19 +4,24 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   console.log("Render App");
-  const [button1, setButton1] = useState("white");
-  const [button2, setButton2] = useState("white");
-  const [button3, setButton3] = useState("white");
+
+  // Array to hold the color states of the buttons
+  const [buttonColors, setButtonColors] = useState(["white", "white", "white"]);
 
   const [clicksIndex, setClicksIndex] = useState(0);
+
   function changeColor(color, buttonIndex) {
-    if (buttonIndex === 1) {
-      setButton1("red");
-    } else if (buttonIndex === 2) {
-      setButton2("blue");
-    } else if (buttonIndex === 3) {
-      setButton3("green");
-    }
+    setButtonColors((prevColors) => {
+      const newColors = [...prevColors];
+      if (buttonIndex === 1) {
+        newColors[0] = "red";
+      } else if (buttonIndex === 2) {
+        newColors[1] = "blue";
+      } else if (buttonIndex === 3) {
+        newColors[2] = "green";
+      }
+      return newColors;
+    });
 
     setClicksIndex((prevCount) => prevCount + 1);
   }
@@ -38,7 +43,7 @@ export default function App() {
           console.log("On Press Out");
         }}
         style={{
-          backgroundColor: button1,
+          backgroundColor: buttonColors[0],
           flex: 0.3,
           borderWidth: 5,
           borderColor: "black",
@@ -53,7 +58,7 @@ export default function App() {
         }}
         style={[
           {
-            backgroundColor: button2,
+            backgroundColor: buttonColors[1],
           },
           styles.colorButtons,
         ]}
@@ -66,7 +71,7 @@ export default function App() {
         }}
         style={[
           {
-            backgroundColor: button3,
+            backgroundColor: buttonColors[2],
           },
           styles.colorButtons,
         ]}
